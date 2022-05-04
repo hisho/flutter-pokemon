@@ -14,22 +14,30 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(
-        title: 'first',
-      ),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Text("Hello World",
-              style: Theme.of(context).textTheme.headline4)),
-    );
+        body: Center(
+            child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.network(
+            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
+            height: 100,
+            width: 100),
+        const Text(
+          'pikachu',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        )
+      ],
+    )));
   }
 }
