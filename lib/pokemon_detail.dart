@@ -35,8 +35,14 @@ class PokemonDetail extends StatelessWidget {
           'pikachu',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        const Chip(
-          label: Text('electric'),
+        Chip(
+          label: Text(
+            'electric',
+            style: TextStyle(
+                color: Colors.yellow.computeLuminance() > 0.5
+                    ? Colors.black
+                    : Colors.white),
+          ),
           backgroundColor: Colors.yellow,
         )
       ],
