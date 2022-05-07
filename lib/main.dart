@@ -20,19 +20,45 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TopPage extends StatelessWidget {
+class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
+
+  @override
+  State<TopPage> createState() => _TopPageState();
+}
+
+class _TopPageState extends State<TopPage> {
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.blueGrey.withOpacity(0.5),
-          height: 1,
+      body: SafeArea(
+        child: ListView.separated(
+          separatorBuilder: (context, index) => Divider(
+            color: Colors.blueGrey.withOpacity(0.5),
+            height: 1,
+          ),
+          padding: EdgeInsets.zero,
+          itemCount: 1000,
+          itemBuilder: (context, index) => PokemonListItem(index: index),
         ),
-        padding: EdgeInsets.zero,
-        itemCount: 1000,
-        itemBuilder: (context, index) => PokemonListItem(index: index),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        selectedFontSize: 12,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        onTap: (index) => {setState(() => currentIndex = index)},
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              activeIcon: Icon(Icons.home),
+              label: 'home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings_outlined),
+              activeIcon: Icon(Icons.settings),
+              label: 'settings')
+        ],
       ),
     );
   }
