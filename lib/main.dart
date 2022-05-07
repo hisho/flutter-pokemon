@@ -25,25 +25,47 @@ class TopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: 1000,
-        itemBuilder: (context, index) => Container(
-          color: Colors.red.withOpacity(0.5),
-          child: ElevatedButton(onPressed: () => {}, child: const Text('test')),
+      body: ListView.separated(
+        separatorBuilder: (context, index) => Divider(
+          color: Colors.blueGrey.withOpacity(0.5),
+          height: 1,
         ),
+        padding: EdgeInsets.zero,
+        itemCount: 1000,
+        itemBuilder: (context, index) => PokemonListItem(index: index),
       ),
     );
   }
 }
 
-class PikaButton extends StatelessWidget {
-  const PikaButton({Key? key, required int index}) : super(key: key);
-
+class PokemonListItem extends StatelessWidget {
+  const PokemonListItem({Key? key, required int index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: const Text('detail'),
-      onPressed: () => {
+    return ListTile(
+      selectedTileColor: Colors.red,
+      contentPadding:
+          const EdgeInsets.only(top: 4, bottom: 4, left: 20, right: 20),
+      hoverColor: Colors.black12.withOpacity(0.1),
+      focusColor: Colors.black12.withOpacity(0.1),
+      leading: Container(
+        width: 80,
+        decoration: BoxDecoration(
+          color: Colors.yellow.withOpacity(0.5),
+          image: const DecorationImage(
+            fit: BoxFit.fitWidth,
+            image: NetworkImage(
+                'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'),
+          ),
+        ),
+      ),
+      title: const Text(
+        'Pikachu',
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      subtitle: const Text('⚡ ️electric'),
+      trailing: const Icon(Icons.navigate_next),
+      onTap: () => {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) => const PokemonDetail(),
