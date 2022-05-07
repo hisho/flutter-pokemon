@@ -39,7 +39,10 @@ class TopPage extends StatelessWidget {
 }
 
 class PokemonListItem extends StatelessWidget {
-  const PokemonListItem({Key? key, required int index}) : super(key: key);
+  const PokemonListItem({Key? key, required this.index}) : super(key: key);
+
+  final int index;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -59,9 +62,9 @@ class PokemonListItem extends StatelessWidget {
           ),
         ),
       ),
-      title: const Text(
-        'Pikachu',
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      title: Text(
+        "Pikachu ${index.toString().padLeft(3, '0')}",
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
       subtitle: const Text('⚡ ️electric'),
       trailing: const Icon(Icons.navigate_next),
