@@ -25,10 +25,12 @@ class TopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: List.generate(1000, (id) => id)
-            .map((val) => PikaButton(index: val))
-            .toList(),
+      body: ListView.builder(
+        itemCount: 1000,
+        itemBuilder: (context, index) => Container(
+          color: Colors.red.withOpacity(0.5),
+          child: ElevatedButton(onPressed: () => {}, child: const Text('test')),
+        ),
       ),
     );
   }
