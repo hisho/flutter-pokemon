@@ -41,16 +41,24 @@ class _TopPageState extends State<TopPage> {
         currentIndex: currentIndex,
         selectedFontSize: 12,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        onTap: (index) => {setState(() => currentIndex = index)},
+        onTap: (index) => {
+          setState(
+            () => {
+              currentIndex = index,
+            },
+          ),
+        },
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home),
-              label: 'home'),
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: 'home',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              activeIcon: Icon(Icons.settings),
-              label: 'settings')
+            icon: Icon(Icons.settings_outlined),
+            activeIcon: Icon(Icons.settings),
+            label: 'settings',
+          )
         ],
       ),
     );
