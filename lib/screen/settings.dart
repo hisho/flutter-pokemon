@@ -6,21 +6,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 1, color: Colors.grey.withOpacity(0.2)),
-            ),
-          ),
-          child: const ListTile(
-            leading: Icon(Icons.lightbulb),
-            title: Text('Appearance'),
-            subtitle: Text('Customize how Notion looks on your device.'),
-            trailing: SelectThemeMode(),
-          ),
-        ),
-      ],
+      children: const [SelectThemeMode()],
     );
   }
 }
@@ -45,20 +31,32 @@ class _SelectThemeModeState extends State<SelectThemeMode> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100.0,
-      child: DropdownButton<ThemeMode>(
-        items: const [
-          DropdownMenuItem(child: Text('system'), value: ThemeMode.system),
-          DropdownMenuItem(child: Text('dark'), value: ThemeMode.dark),
-          DropdownMenuItem(child: Text('light'), value: ThemeMode.light),
-        ],
-        underline: Container(
-          height: 0,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(width: 1, color: Colors.grey.withOpacity(0.2)),
         ),
-        isExpanded: true,
-        onChanged: onChangeThemeMode,
-        value: _themeMode,
+      ),
+      child: ListTile(
+        leading: const Icon(Icons.lightbulb),
+        title: const Text('Appearance'),
+        subtitle: const Text('Customize how Notion looks on your device.'),
+        trailing: SizedBox(
+          width: 100.0,
+          child: DropdownButton<ThemeMode>(
+            items: const [
+              DropdownMenuItem(child: Text('system'), value: ThemeMode.system),
+              DropdownMenuItem(child: Text('dark'), value: ThemeMode.dark),
+              DropdownMenuItem(child: Text('light'), value: ThemeMode.light),
+            ],
+            underline: Container(
+              height: 0,
+            ),
+            isExpanded: true,
+            onChanged: onChangeThemeMode,
+            value: _themeMode,
+          ),
+        ),
       ),
     );
   }
