@@ -33,12 +33,12 @@ class SelectThemeMode extends StatefulWidget {
 }
 
 class _SelectThemeModeState extends State<SelectThemeMode> {
-  ThemeMode _dropdownValue = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.system;
 
-  void dropdownCallback(ThemeMode? selectedValue) {
+  void onChangeThemeMode(ThemeMode? selectedValue) {
     if (selectedValue is ThemeMode) {
       setState(() {
-        _dropdownValue = selectedValue;
+        _themeMode = selectedValue;
       });
     }
   }
@@ -57,8 +57,8 @@ class _SelectThemeModeState extends State<SelectThemeMode> {
           height: 0,
         ),
         isExpanded: true,
-        onChanged: dropdownCallback,
-        value: _dropdownValue,
+        onChanged: onChangeThemeMode,
+        value: _themeMode,
       ),
     );
   }
