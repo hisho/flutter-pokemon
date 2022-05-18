@@ -38,7 +38,8 @@ class _SelectThemeModeState extends State<SelectThemeMode> {
         ),
       ),
       child: ListTile(
-        leading: const Icon(Icons.lightbulb),
+        leading:
+            Icon(_themeMode == ThemeMode.dark ? Icons.dark_mode : Icons.sunny),
         title: const Text('Appearance'),
         subtitle: const Text('Customize how Notion looks on your device.'),
         trailing: SizedBox(
